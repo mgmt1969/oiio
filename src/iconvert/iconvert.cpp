@@ -29,6 +29,13 @@
 */
 
 
+#if defined(_MSC_VER)
+// Ignore warnings about conditional expressions that always evaluate true
+// on a given platform but may evaluate differently on another. There's
+// nothing wrong with such conditionals.
+#  pragma warning (disable : 4127)
+#endif
+
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>

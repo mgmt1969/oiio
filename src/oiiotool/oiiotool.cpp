@@ -29,6 +29,13 @@
 */
 
 
+#if defined(_MSC_VER)
+// Ignore warnings about conditional expressions that always evaluate true
+// on a given platform but may evaluate differently on another. There's
+// nothing wrong with such conditionals.
+#  pragma warning (disable : 4127)
+#endif
+
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
@@ -668,7 +675,7 @@ set_full_to_pixels (int argc, const char *argv[])
 
 
 static int
-output_tiles (int /*argc*/, const char *argv[])
+output_tiles (int /*argc*/, const char* /*argv*/[])
 {
     // the ArgParse will have set the tile size, but we need this routine
     // to clear the scanline flag
@@ -679,7 +686,7 @@ output_tiles (int /*argc*/, const char *argv[])
 
 
 static int
-action_unmip (int, const char *argv[])
+action_unmip (int argc, const char *argv[])
 {
     if (ot.postpone_callback (1, action_unmip, argc, argv))
         return 0;
@@ -700,7 +707,7 @@ action_unmip (int, const char *argv[])
 
 
 static int
-action_select_subimage (int, const char *argv[])
+action_select_subimage (int argc, const char *argv[])
 {
     if (ot.postpone_callback (1, action_select_subimage, argc, argv))
         return 0;
@@ -717,7 +724,7 @@ action_select_subimage (int, const char *argv[])
 
 
 static int
-action_diff (int, const char *argv[])
+action_diff (int argc, const char *argv[])
 {
     if (ot.postpone_callback (2, action_diff, argc, argv))
         return 0;
@@ -731,7 +738,7 @@ action_diff (int, const char *argv[])
 
 
 static int
-action_add (int, const char *argv[])
+action_add (int argc, const char *argv[])
 {
     if (ot.postpone_callback (2, action_add, argc, argv))
         return 0;
@@ -767,7 +774,7 @@ action_add (int, const char *argv[])
 
 
 static int
-action_sub (int, const char *argv[])
+action_sub (int argc, const char *argv[])
 {
     if (ot.postpone_callback (2, action_sub, argc, argv))
         return 0;
@@ -812,7 +819,7 @@ action_sub (int, const char *argv[])
 
 
 static int
-action_abs (int, const char *argv[])
+action_abs (int argc, const char *argv[])
 {
     if (ot.postpone_callback (1, action_abs, argc, argv))
         return 0;
@@ -845,7 +852,7 @@ action_abs (int, const char *argv[])
 
 
 static int
-action_flip (int, const char *argv[])
+action_flip (int argc, const char *argv[])
 {
     if (ot.postpone_callback (1, action_flip, argc, argv))
         return 0;
@@ -880,7 +887,7 @@ action_flip (int, const char *argv[])
 
 
 static int
-action_flop (int, const char *argv[])
+action_flop (int argc, const char *argv[])
 {
     if (ot.postpone_callback (1, action_flop, argc, argv))
         return 0;
@@ -915,7 +922,7 @@ action_flop (int, const char *argv[])
 
 
 static int
-action_flipflop (int, const char *argv[])
+action_flipflop (int argc, const char *argv[])
 {
     if (ot.postpone_callback (1, action_flipflop, argc, argv))
         return 0;
